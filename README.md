@@ -10,7 +10,7 @@ This project reorganizes mixed purchase/sale rows from a single CSV into clean t
 
 ---
 
-## Repository Structure
+## 📦 Repository Structure
 
 ```
 .
@@ -26,9 +26,11 @@ This project reorganizes mixed purchase/sale rows from a single CSV into clean t
 └─ (optional) greenspot_model.mwb      # MySQL Workbench model
 ```
 
+> **Tip:** If viewing on GitHub, open `docs/greenspot_eer_dark.png` to see the ERD with datatypes.
+
 ---
 
-## Entity‑Relationship Overview
+## 🗺️ Entity‑Relationship Overview
 
 Core tables and relationships:
 
@@ -40,10 +42,11 @@ Core tables and relationships:
 
 The design follows **3NF**, removes duplication, and supports both **purchases** and **sales** in a single ledger: `stock_transactions(event_type = 'purchase' | 'sale')`.
 
+![Greenspot ERD](docs/greenspot_eer_dark.png)
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 > Requires **MySQL 8+** and **MySQL Workbench**.
 
@@ -63,8 +66,13 @@ The design follows **3NF**, removes duplication, and supports both **purchases**
    SOURCE greenspot_business_query.sql;
    ```
 
+If you prefer Workbench:
+- Open each script → click **Run** (⚡).
+- Or use *Server → Data Import* to execute scripts.
 
-## What This Project Demonstrates
+---
+
+## ✅ What This Project Demonstrates
 
 - **Normalization & Modeling**
   - Separates reference data (categories, suppliers, customers, storage locations) from transactional facts.
@@ -80,7 +88,7 @@ The design follows **3NF**, removes duplication, and supports both **purchases**
 
 ---
 
-## Sample Queries
+## 🔎 Sample Queries
 
 ### 1) Products with categories & default location
 ```sql
@@ -127,7 +135,7 @@ ORDER BY total_revenue DESC;
 
 ---
 
-## Validation Checklist
+## 🧪 Validation Checklist
 
 - Tables created with appropriate **PKs, FKs, and datatypes**.
 - All CSV data mapped into normalized tables via `greenspot_load_data.sql`.
@@ -136,9 +144,9 @@ ORDER BY total_revenue DESC;
 
 ---
 
-## Insights & Design Rationale
+## 📝 Insights & Design Rationale (short)
 
-**Anomalies in the source CSV**
+- **Anomalies in the source CSV**
   - Mixed purchase/sale rows in one sheet.
   - Missing purchase quantities (only `cost` and occasional `on_hand` snapshots).
   - Inconsistent unit strings; case‑sensitive location codes.
@@ -153,14 +161,47 @@ ORDER BY total_revenue DESC;
   - Minimal friction to add new product lines, suppliers, and depots.
   - A clear path to richer analytics (e.g., reorder analysis, best sellers, profitability).
 
+For the full narrative, see **`greenspot_insights.txt`** and **`greenspot_submission_summary.txt`**.
+
 ---
 
+## 🛠️ Reproducing / Editing the EER Diagram
 
-## License
+1. Open **MySQL Workbench** and run `greenspot_schema.sql`.
+2. **Reverse Engineer**: *Database → Reverse Engineer* → pick schema **`greenspot`**.
+3. Arrange tables, save as **`greenspot_model.mwb`**.
+4. Export PNG: *File → Export → Export Diagram as PNG* → `docs/greenspot_eer_light.png`.
+
+> This repo includes a high‑resolution **dark‑theme ERD** (`docs/greenspot_eer_dark.png`) as a ready visual.
+
+---
+
+## 🧭 Roadmap (Future Enhancements)
+
+- Normalize **units** into a lookup table and map legacy variants.
+- Add **purchase quantity** to capture true stock movement for receipts.
+- Expand **customers** with names/emails and build order history views.
+- Add **derived views** (e.g., stock below reorder, 30‑day best sellers).
+- Optional **triggers** to maintain last‑known on‑hand or to validate negative stock.
+
+---
+
+## 🙌 How to Use in Interviews
+
+- Walk evaluators through the **ERD** and explain how the design fixes CSV anomalies.
+- Run the **business query** to show quick insight (revenue by category).
+- Discuss the **tradeoff** of flexible units now vs. future normalization.
+- Outline the **roadmap** to productionize (triggers, procedures, monitoring).
+
+---
+
+## 📄 License
+
 You’re free to clone and adapt for learning and portfolio demonstrations.  
+(If publishing publicly, add a license that matches your preference, e.g., MIT.)
 
 ---
 
 ## 🔗 Author
-**Collins Ayidan** — Data & Insights Analyst 
+**Collins Ayidan** — Data & Back‑End Developer  
 If you have questions or want a customized extension (promotions, supplier costing, or delivery slots), feel free to open an issue or reach out.
