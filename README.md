@@ -159,7 +159,7 @@ ORDER BY total_revenue DESC;
 ---
 
 
-## 📄 License
+## License
 You’re free to clone and adapt for learning and portfolio demonstrations.  
 
 ---
