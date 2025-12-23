@@ -26,8 +26,6 @@ This project reorganizes mixed purchase/sale rows from a single CSV into clean t
 └─ (optional) greenspot_model.mwb      # MySQL Workbench model
 ```
 
-> **Tip:** If viewing on GitHub, open `docs/greenspot_eer_dark.png` to see the ERD with datatypes.
-
 ---
 
 ## Entity‑Relationship Overview
@@ -42,7 +40,6 @@ Core tables and relationships:
 
 The design follows **3NF**, removes duplication, and supports both **purchases** and **sales** in a single ledger: `stock_transactions(event_type = 'purchase' | 'sale')`.
 
-![Greenspot ERD](docs/greenspot_eer_dark.png)
 
 ---
 
