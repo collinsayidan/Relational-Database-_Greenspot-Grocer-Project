@@ -10,7 +10,7 @@ This project reorganizes mixed purchase/sale rows from a single CSV into clean t
 
 ---
 
-## 📦 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -30,7 +30,7 @@ This project reorganizes mixed purchase/sale rows from a single CSV into clean t
 
 ---
 
-## 🗺️ Entity‑Relationship Overview
+## Entity‑Relationship Overview
 
 Core tables and relationships:
 
@@ -46,7 +46,7 @@ The design follows **3NF**, removes duplication, and supports both **purchases**
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 > Requires **MySQL 8+** and **MySQL Workbench**.
 
@@ -72,7 +72,7 @@ If you prefer Workbench:
 
 ---
 
-## ✅ What This Project Demonstrates
+## What This Project Demonstrates
 
 - **Normalization & Modeling**
   - Separates reference data (categories, suppliers, customers, storage locations) from transactional facts.
@@ -88,7 +88,7 @@ If you prefer Workbench:
 
 ---
 
-## 🔎 Sample Queries
+##  Sample Queries
 
 ### 1) Products with categories & default location
 ```sql
@@ -135,7 +135,7 @@ ORDER BY total_revenue DESC;
 
 ---
 
-## 🧪 Validation Checklist
+## Validation Checklist
 
 - Tables created with appropriate **PKs, FKs, and datatypes**.
 - All CSV data mapped into normalized tables via `greenspot_load_data.sql`.
@@ -144,7 +144,7 @@ ORDER BY total_revenue DESC;
 
 ---
 
-## 📝 Insights & Design Rationale (short)
+## Insights & Design Rationale (short)
 
 - **Anomalies in the source CSV**
   - Mixed purchase/sale rows in one sheet.
@@ -165,7 +165,7 @@ For the full narrative, see **`greenspot_insights.txt`** and **`greenspot_submis
 
 ---
 
-## 🛠️ Reproducing / Editing the EER Diagram
+##  Reproducing / Editing the EER Diagram
 
 1. Open **MySQL Workbench** and run `greenspot_schema.sql`.
 2. **Reverse Engineer**: *Database → Reverse Engineer* → pick schema **`greenspot`**.
@@ -176,7 +176,7 @@ For the full narrative, see **`greenspot_insights.txt`** and **`greenspot_submis
 
 ---
 
-## 🧭 Roadmap (Future Enhancements)
+## Roadmap (Future Enhancements)
 
 - Normalize **units** into a lookup table and map legacy variants.
 - Add **purchase quantity** to capture true stock movement for receipts.
@@ -186,7 +186,7 @@ For the full narrative, see **`greenspot_insights.txt`** and **`greenspot_submis
 
 ---
 
-## 🙌 How to Use in Interviews
+## How to Use in Interviews
 
 - Walk evaluators through the **ERD** and explain how the design fixes CSV anomalies.
 - Run the **business query** to show quick insight (revenue by category).
@@ -195,7 +195,7 @@ For the full narrative, see **`greenspot_insights.txt`** and **`greenspot_submis
 
 ---
 
-## 📄 License
+## License
 
 You’re free to clone and adapt for learning and portfolio demonstrations.  
 (If publishing publicly, add a license that matches your preference, e.g., MIT.)
